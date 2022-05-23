@@ -201,6 +201,14 @@ explore: ten_million_orders {
   }
 }
 
+explore: orders_access_filter {
+  view_name: orders
+  access_filter: {
+    field: orders.status
+    user_attribute: user_access_none
+  }
+}
+
 explore: test {}
 
 explore: users {}
