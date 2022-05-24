@@ -6,8 +6,8 @@ include: "/pdf_test.dashboard"
 include: "/pdf_test_2.dashboard"
 
 datagroup: thelook_default_datagroup {
-  sql_trigger: SELECT 1;;
-  max_cache_age: "1 hour"
+  sql_trigger: SELECT NOW();;
+  max_cache_age: "0 minutes"
 }
 
 persist_with: thelook_default_datagroup
