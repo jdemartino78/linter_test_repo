@@ -35,7 +35,37 @@ view: flights {
     sql: ${TABLE}.dep_delay ;;
   }
 
-  dimension_group: dep {
+  dimension: concatenated {
+    type: string
+    sql: CONCAT(${TABLE}.cancelled,${TABLE}.carrier, "ashdaksjhdklasdnkj.nxckjashdliuagfliuAHSDKJSANZXKJN.ASKNDKSAJFGLJDSGVFJHBDSJKCBASKJBDKSAGFHADSFJKBCKJ.SANC.KNASZX.KJBZDKJBC") ;;
+  }
+
+  parameter: date_granularity {
+    type: string
+    default_value: "Day"
+    allowed_value: { value: "Day" }
+    allowed_value: { value: "Month" }
+    allowed_value: { value: "Quarter" }
+    allowed_value: { value: "Year" }
+  }
+
+  dimension: date {
+    label_from_parameter: date_granularity
+    sql:
+    CASE
+      WHEN {% parameter date_granularity %} = 'Day'
+        THEN ${departure_date}::VARCHAR
+      WHEN {% parameter date_granularity %} = 'Month'
+        THEN ${departure_month}::VARCHAR
+      WHEN {% parameter date_granularity %} = 'Quarter'
+        THEN ${departure_quarter}::VARCHAR
+      WHEN {% parameter date_granularity %} = 'Year'
+        THEN ${departure_year}::VARCHAR
+      ELSE NULL
+    END ;;
+  }
+
+  dimension_group: departure {
     type: time
     timeframes: [
       raw,

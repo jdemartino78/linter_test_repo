@@ -20,6 +20,16 @@ view: order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+  dimension: reference {
+    type: number
+    sql: ${order_id} ;;
+  }
+
+  dimension: concatenated {
+    type: string
+    sql: CONCAT(CAST(${TABLE}.inventory_item_id as CHAR),"This is a looooooooooooooooong chatacter testing for render errors.jdlaskdlkashdkjlashdkjlahsdkljhsklajshfkasheliwuehrliuewqyriluwegfdsbjknaskjdhiluwegruygfsdajhbjasbdn.wakhewlirugwekyufagsdjbjksankdjwehfgkeruygfekyasdkjbacskj.xcna;oishdiweguahrfsa;odp;k;aslkdpwa0isdulaewisfgdkcyhjgalsiuhsliqwytewuqyiuroaljsd.nhkasbfnc.kabwvekusydiluhlwaejshfbkndmnlaweufslygiudkhjbafwjhesdbfkndzlwweargilusdhlkjbfansddkjbhjvakeufslGIDbkjcnaelgfveuwglaisdhjkbfavgfilus>bjlcnx") ;;
+  }
+
   dimension_group: returned {
     type: time
     timeframes: [

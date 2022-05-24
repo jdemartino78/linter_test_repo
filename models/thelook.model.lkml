@@ -4,6 +4,7 @@ connection: "thelook"
 include: "/views/**/*.view"
 include: "/pdf_test.dashboard"
 include: "/pdf_test_2.dashboard"
+include: "/cooler_dashboard.dashboard"
 
 datagroup: thelook_default_datagroup {
   sql_trigger: SELECT NOW();;
@@ -197,6 +198,14 @@ explore: ten_million_orders {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
+  }
+}
+
+explore: orders_access_filter {
+  view_name: orders
+  access_filter: {
+    field: orders.status
+    user_attribute: user_access_none
   }
 }
 
