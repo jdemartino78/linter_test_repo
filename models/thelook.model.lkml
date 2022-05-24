@@ -188,9 +188,8 @@ explore: sindhu {
 }
 
 explore: ten_million_orders {
-  conditionally_filter: {
-    filters: [orders.id: "1,2,3"]
-    unless: [orders.created_date]
+  always_filter: {
+    filters: [orders.created_date: "2 days ago for 1 day"]
   }
   join: orders {
     type: left_outer
