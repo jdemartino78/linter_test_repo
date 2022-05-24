@@ -188,6 +188,10 @@ explore: sindhu {
 }
 
 explore: ten_million_orders {
+  conditionally_filter: {
+    filters: [orders.id: "1,2,3"]
+    unless: [orders.created_date]
+  }
   join: orders {
     type: left_outer
     sql_on: ${ten_million_orders.order_id} = ${orders.id} ;;
