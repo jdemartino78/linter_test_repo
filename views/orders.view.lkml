@@ -19,6 +19,7 @@ view: orders {
       quarter,
       year
     ]
+    allow_fill: yes
     sql: ${TABLE}.created_at ;;
   }
 
