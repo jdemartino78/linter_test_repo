@@ -1,4 +1,5 @@
 - dashboard: preferred_viewer_dashboards
+
   title: "Preferred Viewer: dashboards"
   layout: newspaper
   preferred_viewer: dashboards
